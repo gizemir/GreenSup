@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">perenual.com</domain>
+        <domain includeSubdomains="true">api.perenual.com</domain>
+        <domain includeSubdomains="true">newsapi.org</domain>
+        <domain includeSubdomains="true">api.openweathermap.org</domain>
+        <domain includeSubdomains="true">my-api.plantnet.org</domain>
+        <domain includeSubdomains="true">plantnet.org</domain>
+        <domain includeSubdomains="true">api.plant.id</domain>
+        <domain includeSubdomains="true">plant.id</domain>
+        <domain includeSubdomains="true">104.21.33.97</domain>
+        <domain includeSubdomains="true">172.67.175.38</domain>
+        <domain includeSubdomains="true">104.26.11.73</domain>
+        <domain includeSubdomains="true">104.26.10.73</domain>
+        <domain includeSubdomains="true">51.158.35.108</domain>
+        <domain includeSubdomains="true">163.172.94.90</domain>
+        <domain includeSubdomains="true">10.0.2.2</domain>
+        <domain includeSubdomains="true">127.0.0.1</domain>
+    </domain-config>
+    
+    <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>
+            <certificates src="system"/>
+            <certificates src="user"/>
+        </trust-anchors>
+    </base-config>
+</network-security-config> 

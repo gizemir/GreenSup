@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "670387387840",
+    "project_id": "plantapp-d0d68",
+    "storage_bucket": "plantapp-d0d68.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:670387387840:android:21ac74c304bb5746e09c25",
+        "android_client_info": {
+          "package_name": "com.gizemir.plantapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcKhI3tuoNFBLLOI5MEwZVL8FIjU4DrkY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
