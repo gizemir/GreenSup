@@ -7,8 +7,24 @@
 ### 🔍 Bitki Araştırma, Tanıma ve Analiz
 - **AI Destekli Bitki Tanıma**: Gemini AI ve Plant.ID API'leri kullanarak fotoğraftan bitki türü tanıma
 - **Hastalık Tespiti**: Bitki hastalıklarının erken tespiti ve tedavi önerileri
+![3](https://github.com/user-attachments/assets/c59bf6d4-196c-472e-a37d-f562ecfb06c2) 
+![3](https://github.com/user-attachments/assets/9e426b5f-d2cf-4870-ae0a-a90611c883a9)
+![3](https://github.com/user-attachments/assets/8e438ab9-688b-46dd-b706-bc88a33efd94)
+![3](https://github.com/user-attachments/assets/479b1a09-4855-4fec-a4e0-9488807773b7)
+![3](https://github.com/user-attachments/assets/17a6ad54-b127-4314-9c40-c8b3b1db91f6)
+![10](https://github.com/user-attachments/assets/27de9148-df68-4ad7-bb97-a6b41eb2615d)
+![5](https://github.com/user-attachments/assets/80592e23-9558-4777-9a01-2443853fc163)
+![5](https://github.com/user-attachments/assets/f3a26f7c-a4c2-4768-9126-fff1f52b937a)
 - **Detaylı Bitki Bilgileri**: Bilimsel isim, bakım tavsiyeleri, sulama periyodu
+![3](https://github.com/user-attachments/assets/495b1f04-44b0-4b0f-9d87-d790ed651bda)
+![1](https://github.com/user-attachments/assets/c39703ed-4482-42bc-a31d-560b33eb9188)
+![2](https://github.com/user-attachments/assets/3921210d-fb2d-404e-a0b5-98296290e674)
+![3](https://github.com/user-attachments/assets/2c23b782-d9b5-475f-9a0b-cf6b8d232da1)
 - **Bitki araştırma**: Perenual API kullanılarak bir çok bitkinin taksonomik, ve yetiştirme bilgilerine ulaşma
+![2](https://github.com/user-attachments/assets/2c2ea805-f45c-4951-bf90-8ffd38d80f1a)
+![2](https://github.com/user-attachments/assets/474b5339-685e-4c9a-b313-450b9972fa44)
+![2](https://github.com/user-attachments/assets/b419f2d9-9f11-428a-8cca-e8496cbbf3bd)
+![2](https://github.com/user-attachments/assets/8e8e5b89-9dd3-45e0-bb0a-89300ed8c588)
 
 ### 🌤️ Hava Durumu Entegrasyonu
 - **Anlık Hava Durumu**: OpenWeatherMap API ile güncel hava durumu bilgileri
