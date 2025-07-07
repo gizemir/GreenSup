@@ -1,6 +1,6 @@
 # GreenSup 🌱
 
-**GreenSup**, bitki severlerin günlük yaşamlarını kolaylaştırmak için geliştirilmiş modern bir Android uygulamasıdır. Yapay zeka destekli bitki tanıma, hastalık tespiti, hava durumu takibi, bahçe takibi ve bitki bakım tavsiyeleri gibi kapsamlı özellikler sunar.
+**GreenSup (Green Support)**, bitki severlerin günlük yaşamlarını kolaylaştırmak için geliştirilmiş modern bir Android uygulamasıdır. Yapay zeka destekli bitki tanıma, hastalık tespiti, hava durumu takibi, bahçe takibi ve bitki bakım tavsiyeleri gibi kapsamlı özellikler sunar.
 
 ## 📱 Özellikler
 
