@@ -7,8 +7,8 @@
 ### 🔍 Bitki Araştırma, Tanıma ve Analiz
 - **AI Destekli Bitki Tanıma**: Gemini AI ve Plant.ID API'leri kullanarak fotoğraftan bitki türü tanıma
 - **Hastalık Tespiti**: Bitki hastalıklarının erken tespiti ve tedavi önerileri
-![3](https://github.com/user-attachments/assets/c59bf6d4-196c-472e-a37d-f562ecfb06c2) 
-![3](https://github.com/user-attachments/assets/9e426b5f-d2cf-4870-ae0a-a90611c883a9)
+![3](https://github.com/user-attachments/assets/c59bf6d4-196c-472e-a37d-f562ecfb06c2) ![3](https://github.com/user-attachments/assets/9e426b5f-d2cf-4870-ae0a-a90611c883a9)
+
 ![3](https://github.com/user-attachments/assets/8e438ab9-688b-46dd-b706-bc88a33efd94)
 ![3](https://github.com/user-attachments/assets/479b1a09-4855-4fec-a4e0-9488807773b7)
 ![3](https://github.com/user-attachments/assets/17a6ad54-b127-4314-9c40-c8b3b1db91f6)
