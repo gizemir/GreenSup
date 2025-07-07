@@ -19,7 +19,6 @@ object WorkerModule {
     fun provideWorkManager(@ApplicationContext context: Context): WorkManager {
         return WorkManager.getInstance(context)
     }
-
     @Provides
     @Singleton
     fun provideWateringSchedulerService(

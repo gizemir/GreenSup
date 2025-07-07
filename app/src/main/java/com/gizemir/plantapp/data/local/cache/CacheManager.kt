@@ -38,34 +38,29 @@ class CacheManager @Inject constructor(
         private const val FORUM_CACHE_EXPIRY_TIME = 30 * 60 * 1000L // 30 dakika
         private const val PLANT_CARE_CACHE_EXPIRY_TIME = 24 * 60 * 60 * 1000L // 24 saat
     }
-    
-
     private val plantCareMutex = Mutex()
     private val plantCareCache = mutableMapOf<String, PlantCareEntry>()
-    
     data class PlantCareEntry(
         val plantCare: PlantCare,
         val timestamp: Long
     )
     
-    /**
-     * PlantCare cache'den veri al
-     */
+
     suspend fun getPlantCare(plantName: String, scientificName: String): PlantCare? {
         return try {
-            // Önce database'den kontrol et
+
             val entity = plantCareDao.getPlantCare(plantName, scientificName)
             if (entity != null) {
                 val currentTime = System.currentTimeMillis()
                 if (currentTime - entity.timestamp < PLANT_CARE_CACHE_EXPIRY_TIME) {
                     entity.toPlantCare()
                 } else {
-                    // Süresi dolmuş, sil
+
                     plantCareDao.deletePlantCare(entity)
                     null
                 }
             } else {
-                // Database'de yok, in-memory cache'e bak
+
                 plantCareMutex.withLock {
                     val key = createPlantCareKey(plantName, scientificName)
                     val entry = plantCareCache[key]
@@ -75,7 +70,7 @@ class CacheManager @Inject constructor(
                         if (currentTime - entry.timestamp < PLANT_CARE_CACHE_EXPIRY_TIME) {
                             entry.plantCare
                         } else {
-                            // Cache süresi dolmuş, kaldır
+
                             plantCareCache.remove(key)
                             null
                         }
@@ -90,16 +85,14 @@ class CacheManager @Inject constructor(
         }
     }
     
-    /**
-     * PlantCare cache'e veri ekle
-     */
+
     suspend fun putPlantCare(plantName: String, scientificName: String, plantCare: PlantCare) {
         try {
-            // Database'e kaydet
+
             val entity = PlantCareEntity.fromPlantCare(plantCare)
             plantCareDao.insertPlantCare(entity)
             
-            // In-memory cache'e de ekle (hızlı erişim için)
+
             plantCareMutex.withLock {
                 val key = createPlantCareKey(plantName, scientificName)
                 plantCareCache[key] = PlantCareEntry(
@@ -107,7 +100,7 @@ class CacheManager @Inject constructor(
                     timestamp = System.currentTimeMillis()
                 )
                 
-                // Süresi dolmuş girişleri temizle
+
                 cleanupExpiredPlantCareEntries()
             }
         } catch (e: Exception) {
@@ -115,9 +108,7 @@ class CacheManager @Inject constructor(
         }
     }
     
-    /**
-     * PlantCare cache'i temizle
-     */
+
     suspend fun clearPlantCareCache() {
         try {
             // Database'den temizle
@@ -132,9 +123,7 @@ class CacheManager @Inject constructor(
         }
     }
     
-    /**
-     * PlantCare cache boyutunu al
-     */
+
     suspend fun getPlantCareCacheSize(): Int {
         return try {
             // Database'deki toplam sayı + in-memory cache sayısı
@@ -147,9 +136,7 @@ class CacheManager @Inject constructor(
         }
     }
     
-    /**
-     * PlantCare cache bilgilerini al
-     */
+
     suspend fun getPlantCareCacheInfo(): String {
         return plantCareMutex.withLock {
             val totalEntries = plantCareCache.size
@@ -176,30 +163,20 @@ class CacheManager @Inject constructor(
         }
     }
 
-    /**
-     * Süresi dolmuş tüm cache'leri temizle
-     */
+
     suspend fun clearExpiredCache() {
         try {
             val currentTime = System.currentTimeMillis()
             val plantExpireTime = currentTime - CACHE_EXPIRY_TIME
             val weatherExpireTime = currentTime - WEATHER_CACHE_EXPIRY_TIME
             val forumExpireTime = currentTime - FORUM_CACHE_EXPIRY_TIME
-            
-            // Plant cache'i temizle
             plantDao.deleteExpiredPlants(plantExpireTime)
             plantDetailDao.deleteExpiredPlantDetails(plantExpireTime)
             plantSearchQueryDao.deleteExpiredQueries(plantExpireTime)
-            
-            // Weather cache'i temizle
             weatherDao.deleteExpiredWeather(weatherExpireTime)
             dayWeatherDao.deleteExpiredForecast(weatherExpireTime)
-            
-            // Forum cache'i temizle
             postDao.deleteExpiredPosts(forumExpireTime)
             commentDao.deleteExpiredComments(forumExpireTime)
-            
-            // PlantCare cache'i temizle
             val plantCareExpireTime = currentTime - PLANT_CARE_CACHE_EXPIRY_TIME
             plantCareDao.deleteExpiredPlantCare(plantCareExpireTime)
             plantCareMutex.withLock {
@@ -211,26 +188,18 @@ class CacheManager @Inject constructor(
             Log.e(TAG, "Cache temizleme hatası: ${e.message}")
         }
     }
-    
-    /**
-     * Tüm cache'i temizle
-     */
+
     suspend fun clearAllCache() {
         try {
-            // Plant cache'i temizle
+
             plantDao.deleteAllPlants()
             plantDetailDao.deleteAllPlantDetails()
             plantSearchQueryDao.deleteAllQueries()
-            
-            // Weather cache'i temizle
             weatherDao.deleteAllWeather()
             dayWeatherDao.deleteAllForecast()
-            
-            // Forum cache'i temizle
+
             postDao.deleteAllPosts()
             commentDao.deleteAllComments()
-            
-            // PlantCare cache'i temizle
             clearPlantCareCache()
             
             Log.d(TAG, "Tüm cache temizlendi")
@@ -238,10 +207,7 @@ class CacheManager @Inject constructor(
             Log.e(TAG, "Cache temizleme hatası: ${e.message}")
         }
     }
-    
-    /**
-     * Cache istatistiklerini logla
-     */
+
     suspend fun logCacheStats() {
         try {
             val plantCount = plantDao.getPlantCount()
@@ -266,20 +232,14 @@ class CacheManager @Inject constructor(
             Log.e(TAG, "Cache istatistik hatası: ${e.message}")
         }
     }
-    
-    /**
-     * Otomatik cache temizliği başlat (uygulama başladığında çağrılabilir)
-     */
+
     fun startAutoCacheCleanup(scope: CoroutineScope) {
         scope.launch(Dispatchers.IO) {
             clearExpiredCache()
             logCacheStats()
         }
     }
-    
-    /**
-     * Belirli bir şehir için weather cache'i temizle
-     */
+
     suspend fun clearWeatherCacheForCity(city: String) {
         try {
             weatherDao.getWeatherByCity(city)?.let {
@@ -291,10 +251,7 @@ class CacheManager @Inject constructor(
             Log.e(TAG, "Weather cache temizleme hatası: ${e.message}")
         }
     }
-    
-    /**
-     * Cache boyutunu kontrol et ve gerekirse temizle
-     */
+
     suspend fun manageCacheSize() {
         try {
             val plantCount = plantDao.getPlantCount()
