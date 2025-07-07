@@ -4,10 +4,11 @@
 
 ## 📱 Özellikler
 
-### 🔍 Bitki Tanıma ve Analiz
+### 🔍 Bitki Araştırma, Tanıma ve Analiz
 - **AI Destekli Bitki Tanıma**: Gemini AI ve Plant.ID API'leri kullanarak fotoğraftan bitki türü tanıma
 - **Hastalık Tespiti**: Bitki hastalıklarının erken tespiti ve tedavi önerileri
 - **Detaylı Bitki Bilgileri**: Bilimsel isim, bakım tavsiyeleri, sulama periyodu
+- **Bitki araştırma**: Perenual API kullanılarak bir çok bitkinin taksonomik, ve yetiştirme bilgilerine ulaşma
 
 ### 🌤️ Hava Durumu Entegrasyonu
 - **Anlık Hava Durumu**: OpenWeatherMap API ile güncel hava durumu bilgileri
